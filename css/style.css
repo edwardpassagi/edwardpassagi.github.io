@@ -30,9 +30,9 @@ body{
         background-image: url("../img/bg-mobile.jpg");
     }
     .box{
-        width: 230px;
+        width: 100%;
         padding: 5%;
-        margin-top: 5%;
+        margin-top: 30%;
     }
     
 }
