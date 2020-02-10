@@ -6,7 +6,7 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; 
-    background-color: rgba(19,41,75,1);
+    background-color: rgba(233,74,39,1);
 }
 
 
@@ -16,8 +16,10 @@ body{
 
 .box{
     width: 400px;
-    background: rgba(0,0,0,0.4);
+    
+    background: rgba(19,41,75,0.4);
     padding: 40px;
+    backdrop-filter: blur(3px);
     text-align: center;
     margin: auto;
     margin-top: 5%;
@@ -43,6 +45,7 @@ body{
     }
 }
 .box-img{
+    
     border-radius: 50%;
     width: 200px;
     height: 200px;
@@ -76,12 +79,13 @@ ul{
 }
 
 .box li a{
-    color: rgba(238,94,94,1);
+    color: rgba(233,74,39,1);
+    
     text-decoration: none;
     font-size: 50px;
     transition: all ease-in-out 250;
 }
 
 .box li a:hover{
-    color: rgba(233,74,39,0.9);
+    color: rgba(238,94,94,1);
 }
