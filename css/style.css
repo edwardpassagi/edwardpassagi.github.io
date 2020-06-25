@@ -22,7 +22,7 @@ body{
     backdrop-filter: blur(3px);
     text-align: center;
     margin: auto;
-    margin-top: 5%;
+    margin-top: 20%;
     color: white;
     font-family: 'Century Gothic', sans-serif;
 }
@@ -34,14 +34,14 @@ body{
     .box{
         width: 100%;
         padding: 5%;
-        margin-top: 30%;
+        margin-top: 15%;
     }
     
 }
 
 @media only screen and (max-width: 1024px){
     .box{
-        width: 400px;
+        width: 320px
     }
 }
 .box-img{
