@@ -11,6 +11,7 @@ module.exports = {
   theme: {
     colors: {
       white: "#FFFFFF",
+      bg_white: "#EBEBEB",
       div_white: "#FAFAFA",
       black: "#10101A",
       yankees_blue: "#122647",
