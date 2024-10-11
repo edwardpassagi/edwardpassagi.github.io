@@ -6,7 +6,8 @@ body{
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover; 
-    background-color: rgba(233,74,39,1);
+    /* background-color: rgba(233,74,39,1); */
+    background-color: rgba(19,41,75,1);
 }
 
 
@@ -45,10 +46,10 @@ body{
     }
 }
 .box-img{
-    
     border-radius: 50%;
     width: 200px;
     height: 200px;
+    object-fit: cover;
 }
 
 .box h1{
@@ -64,7 +65,7 @@ body{
 }
 
 .box p{
-    text-align: justify;
+    text-align: center;
 }
 
 ul{
