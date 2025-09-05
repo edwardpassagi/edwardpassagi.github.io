@@ -47,7 +47,7 @@ export default function ProfileCard() {
         <img
           src="/images/avatar.jpg"
           alt="Edward Passagi"
-          className="h-28 w-28 rounded-full object-cover shadow-md ring-4 ring-white dark:ring-gray-700"
+          className="h-28 w-28 rounded-full object-cover shadow-md ring-4 ring-gray-200 dark:ring-gray-700"
           style={{ transform: 'translateZ(50px)' }}
         />
         <h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Edward Passagi</h1>
@@ -58,7 +58,7 @@ export default function ProfileCard() {
           <div className="flex justify-center gap-2">
             <a
               href="/resume.pdf"
-              className="rounded-full bg-gray-900 dark:bg-gray-100 px-3 py-2 text-xs font-medium text-white dark:text-gray-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
+              className="rounded-full inline-flex items-center bg-gray-900 dark:bg-gray-100 px-3 py-2 text-xs font-medium text-white dark:text-gray-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               <span className="inline-flex items-center gap-1.5">
                 <FileText className="h-3.5 w-3.5" /> Resume
@@ -66,7 +66,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="mailto:edward.passagi@gmail.com"
-              className="rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+              className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
                 <Mail className="h-3.5 w-3.5" /> Email
@@ -74,7 +74,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://github.com/edwardpassagi"
-              className="rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+              className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
                 <Github className="h-3.5 w-3.5" /> GitHub
@@ -84,7 +84,7 @@ export default function ProfileCard() {
           <div className="flex justify-center gap-2">
             <a
               href="https://linkedin.com/in/edwardpassagi"
-              className="rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+              className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
                 <Linkedin className="h-3.5 w-3.5" /> LinkedIn
@@ -92,7 +92,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://youtube.com/@edwardpassagi"
-              className="rounded-full border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+              className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
                 <Youtube className="h-3.5 w-3.5" /> YouTube

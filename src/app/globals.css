@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+html {
+  overscroll-behavior: none;
+  background-color: #f9fafb; /* gray-50 - matches gradient bottom */
+}
+
+html.dark {
+  background-color: #1f2937; /* gray-800 - matches gradient bottom */
+}
+
+body {
+  @apply bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800;
+  min-height: 100vh;
+}
