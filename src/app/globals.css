@@ -5,6 +5,8 @@
 html {
   overscroll-behavior: none;
   background-color: #f9fafb; /* gray-50 - matches gradient bottom */
+  height: 100%;
+  overflow: hidden;
 }
 
 html.dark {
@@ -13,5 +15,9 @@ html.dark {
 
 body {
   @apply bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile */
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
