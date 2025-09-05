@@ -53,7 +53,7 @@ export default function ProfileCard() {
         <h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Edward Passagi</h1>
         <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">Software Engineer</p>
         <p className="mt-1 text-sm font-bold text-gray-700 dark:text-gray-200">Ex-Epic Systems • BS & MCS @ UIUC</p>
-        <p className="mt-3 max-w-[32ch] text-sm leading-6 text-gray-700 dark:text-gray-200"> Backend & Infrastructure focused on reliable systems and clean UI, proficient in leveraging AI tools for development.</p>
+        <p className="mt-3 max-w-[32ch] text-sm leading-6 text-gray-700 dark:text-gray-200"> Reliable backends. Clean UIs. Practical AI tools for development.</p>
         <div className="mt-5 space-y-3">
           <div className="flex justify-center gap-2">
             <a
