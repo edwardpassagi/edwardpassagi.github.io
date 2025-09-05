@@ -83,7 +83,7 @@ export default function ProfileCard() {
           </div>
           <div className="flex justify-center gap-2">
             <a
-              href="https://linkedin.com/in/edwardpassagi"
+              href="https://linkedin.com/in/epassagi"
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
