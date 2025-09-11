@@ -5,6 +5,7 @@
 - Display a single interactive parallax profile card.
 - Provide a responsive and accessible user experience.
 - Make it easy to update and maintain.
+- Create CI/CD for Github actions to allow all changes made to the "master" branch to be immediately published to "edwardpassagi.github.io"
 
 ## Technology Stack
 - Next.js (React framework for server-side rendering and routing).

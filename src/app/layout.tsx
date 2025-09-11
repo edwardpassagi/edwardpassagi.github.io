@@ -6,7 +6,7 @@ import { ThemeProvider } from '@/components/ThemeProvider'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Edward Passagi - Software Engineer & Infrastructure Developer',
+  title: 'Edward Passagi',
   description: 'Edward Passagi · Software Engineer, Builder, Problem-Solver',
   keywords: 'Edward Passagi, Software Engineer, Backend Developer, Infrastructure Engineer, Epic Systems, UIUC, Computer Science, Illinois, Urbana-Champaign',
   authors: [{ name: 'Edward Passagi' }],
