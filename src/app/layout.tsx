@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     creator: '@edwardpassagi',
   },
   verification: {
-    google: 'ywJanfnKAXt0jv5a3L2h776LAuKsCk7QhK7j-E49qFc',
+    google: '2XAiKZl1oofjPbhtMKGO3tqFXNQuPKt--GZJ37CE6aA',
   },
   icons: {
     icon: '/images/icon.png',
