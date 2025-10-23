@@ -18,8 +18,8 @@ export default function ProfileCard() {
     const cy = r.top + r.height / 2
     const dx = e.clientX - cx
     const dy = e.clientY - cy
-    const rx = clamp(-(dy / (r.height / 2)) * 12)
-    const ry = clamp((dx / (r.width / 2)) * 12)
+    const rx = clamp(-(dy / (r.height / 2)) * 10)
+    const ry = clamp((dx / (r.width / 2)) * 10)
     const glareX = ((dx / (r.width / 2)) * 50 + 50)
     const glareY = ((dy / (r.height / 2)) * 50 + 50)
     setTilt({ rx, ry, glareX, glareY, elev: 16 })
@@ -36,7 +36,7 @@ export default function ProfileCard() {
       style={{
         transformStyle: 'preserve-3d',
         transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)`,
-        transition: 'transform 120ms ease-out, box-shadow 180ms ease-out',
+        transition: 'transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
         boxShadow:
           tilt.elev > 8
             ? '0 24px 50px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06)'
