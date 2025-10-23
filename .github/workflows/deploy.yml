@@ -34,6 +34,8 @@ jobs:
           static_site_generator: next
           
       - name: Build with Next.js
+        env:
+          NEXT_PUBLIC_GA_MEASUREMENT_ID: G-GKTSETF7QD
         run: npm run build
         
       - name: Upload artifact

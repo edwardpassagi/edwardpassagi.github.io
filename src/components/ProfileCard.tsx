@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import { useRef, useState } from 'react'
-import { Github, Linkedin, Mail, FileText, Youtube } from 'lucide-react'
+import { Mail, FileText, Github, Linkedin, Youtube } from 'lucide-react'
 import { trackEvent } from './Analytics'
 
 export default function ProfileCard() {
@@ -80,6 +80,8 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://github.com/edwardpassagi"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => trackEvent('github_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
@@ -91,6 +93,8 @@ export default function ProfileCard() {
           <div className="flex justify-center gap-2">
             <a
               href="https://linkedin.com/in/epassagi"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => trackEvent('linkedin_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
@@ -100,6 +104,8 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://youtube.com/@edwardpassagi"
+              target="_blank"
+              rel="noopener noreferrer"
               onClick={() => trackEvent('youtube_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >

@@ -5,17 +5,23 @@ import { useEffect, useState } from 'react'
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
 
+// Helper function to check if analytics should be enabled
+const isProductionEnvironment = (): boolean => {
+  if (typeof window === 'undefined') return false
+
+  const isProduction = process.env.NODE_ENV === 'production'
+  const isNotLocalhost =
+    !window.location.hostname.includes('localhost') &&
+    !window.location.hostname.includes('127.0.0.1')
+
+  return isProduction && isNotLocalhost
+}
+
 export function Analytics() {
   const [isProduction, setIsProduction] = useState(false)
 
   useEffect(() => {
-    // Only enable analytics in production and not on localhost
-    const isProductionEnv = process.env.NODE_ENV === 'production'
-    const isNotLocalhost = typeof window !== 'undefined' &&
-      !window.location.hostname.includes('localhost') &&
-      !window.location.hostname.includes('127.0.0.1')
-
-    setIsProduction(isProductionEnv && isNotLocalhost)
+    setIsProduction(isProductionEnvironment())
   }, [])
 
   if (!GA_MEASUREMENT_ID || !isProduction) {
@@ -42,13 +48,7 @@ export function Analytics() {
 
 // Helper function to track custom events
 export const trackEvent = (eventName: string, eventParams?: Record<string, any>) => {
-  // Only track in production and not on localhost
-  const isProductionEnv = process.env.NODE_ENV === 'production'
-  const isNotLocalhost = typeof window !== 'undefined' &&
-    !window.location.hostname.includes('localhost') &&
-    !window.location.hostname.includes('127.0.0.1')
-
-  if (isProductionEnv && isNotLocalhost && typeof window !== 'undefined' && (window as any).gtag) {
+  if (isProductionEnvironment() && typeof window !== 'undefined' && (window as any).gtag) {
     (window as any).gtag('event', eventName, eventParams)
   }
 }
