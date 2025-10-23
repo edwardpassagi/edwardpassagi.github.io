@@ -1,7 +1,9 @@
 'use client'
 
+import Image from 'next/image'
 import { useRef, useState } from 'react'
 import { Github, Linkedin, Mail, FileText, Youtube } from 'lucide-react'
+import { trackEvent } from './Analytics'
 
 export default function ProfileCard() {
   const ref = useRef<HTMLDivElement>(null)
@@ -44,9 +46,11 @@ export default function ProfileCard() {
 
       {/* content layer */}
       <div className="relative z-10 flex flex-col items-center text-center" style={{ transform: 'translateZ(30px)' }}>
-        <img
+        <Image
           src="/images/avatar.jpg"
           alt="Edward Passagi"
+          width={112}
+          height={112}
           className="h-28 w-28 rounded-full object-cover shadow-md ring-4 ring-gray-200 dark:ring-gray-700"
           style={{ transform: 'translateZ(50px)' }}
         />
@@ -58,6 +62,7 @@ export default function ProfileCard() {
           <div className="flex justify-center gap-2">
             <a
               href="/resume.pdf"
+              onClick={() => trackEvent('resume_click')}
               className="rounded-full inline-flex items-center bg-gray-900 dark:bg-gray-100 px-3 py-2 text-xs font-medium text-white dark:text-gray-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -66,6 +71,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="mailto:edward.passagi@gmail.com"
+              onClick={() => trackEvent('email_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -74,6 +80,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://github.com/edwardpassagi"
+              onClick={() => trackEvent('github_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -84,6 +91,7 @@ export default function ProfileCard() {
           <div className="flex justify-center gap-2">
             <a
               href="https://linkedin.com/in/epassagi"
+              onClick={() => trackEvent('linkedin_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -92,6 +100,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="https://youtube.com/@edwardpassagi"
+              onClick={() => trackEvent('youtube_click')}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
