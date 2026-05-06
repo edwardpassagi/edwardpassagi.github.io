@@ -1,68 +1,96 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import { useRef, useState } from 'react'
-import { Mail, FileText, Github, Linkedin, Youtube } from 'lucide-react'
-import { trackEvent } from './Analytics'
+import Image from "next/image";
+import { useRef, useState } from "react";
+import { Mail, FileText, Github, Linkedin, Youtube } from "lucide-react";
+import { trackEvent } from "./Analytics";
 
 export default function ProfileCard() {
-  const ref = useRef<HTMLDivElement>(null)
-  const [tilt, setTilt] = useState({ rx: 0, ry: 0, glareX: 50, glareY: 50, elev: 8 })
+  const ref = useRef<HTMLDivElement>(null);
+  const [tilt, setTilt] = useState({
+    rx: 0,
+    ry: 0,
+    glareX: 50,
+    glareY: 50,
+    elev: 8,
+  });
 
-  const clamp = (v: number, min = -15, max = 15) => Math.max(min, Math.min(max, v))
+  const clamp = (v: number, min = -15, max = 15) =>
+    Math.max(min, Math.min(max, v));
 
   const onMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const r = ref.current?.getBoundingClientRect()
-    if (!r) return
-    const cx = r.left + r.width / 2
-    const cy = r.top + r.height / 2
-    const dx = e.clientX - cx
-    const dy = e.clientY - cy
-    const rx = clamp(-(dy / (r.height / 2)) * 10)
-    const ry = clamp((dx / (r.width / 2)) * 10)
-    const glareX = ((dx / (r.width / 2)) * 50 + 50)
-    const glareY = ((dy / (r.height / 2)) * 50 + 50)
-    setTilt({ rx, ry, glareX, glareY, elev: 16 })
-  }
+    const r = ref.current?.getBoundingClientRect();
+    if (!r) return;
+    const cx = r.left + r.width / 2;
+    const cy = r.top + r.height / 2;
+    const dx = e.clientX - cx;
+    const dy = e.clientY - cy;
+    const rx = clamp(-(dy / (r.height / 2)) * 10);
+    const ry = clamp((dx / (r.width / 2)) * 10);
+    const glareX = (dx / (r.width / 2)) * 50 + 50;
+    const glareY = (dy / (r.height / 2)) * 50 + 50;
+    setTilt({ rx, ry, glareX, glareY, elev: 16 });
+  };
 
-  const onLeave = () => setTilt({ rx: 0, ry: 0, glareX: 50, glareY: 50, elev: 8 })
+  const onLeave = () =>
+    setTilt({ rx: 0, ry: 0, glareX: 50, glareY: 50, elev: 8 });
 
   return (
     <div
       ref={ref}
       onMouseMove={onMove}
       onMouseLeave={onLeave}
-      className="relative w-[min(92vw,440px)] select-none rounded-3xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-8 shadow-xl backdrop-blur-sm"
+      className="relative w-[min(92vw,460px)] select-none rounded-3xl border border-gray-200 dark:border-gray-700 bg-white/90 dark:bg-gray-800/90 p-8 shadow-xl backdrop-blur-sm"
       style={{
-        transformStyle: 'preserve-3d',
+        transformStyle: "preserve-3d",
         transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)`,
-        transition: 'transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+        transition:
+          "transform 500ms cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94)",
         boxShadow:
           tilt.elev > 8
-            ? '0 24px 50px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06)'
-            : '0 16px 30px rgba(0,0,0,.10), 0 6px 14px rgba(0,0,0,.05)',
+            ? "0 24px 50px rgba(0,0,0,.12), 0 8px 16px rgba(0,0,0,.06)"
+            : "0 16px 30px rgba(0,0,0,.10), 0 6px 14px rgba(0,0,0,.05)",
       }}
     >
-
       {/* content layer */}
-      <div className="relative z-10 flex flex-col items-center text-center" style={{ transform: 'translateZ(30px)' }}>
+      <div
+        className="relative z-10 flex flex-col items-center text-center"
+        style={{ transform: "translateZ(30px)" }}
+      >
         <Image
           src="/images/avatar.jpg"
           alt="Edward Passagi"
           width={112}
           height={112}
           className="h-28 w-28 rounded-full object-cover shadow-md ring-4 ring-gray-200 dark:ring-gray-700"
-          style={{ transform: 'translateZ(50px)' }}
+          style={{ transform: "translateZ(50px)" }}
         />
-        <h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">Edward Passagi</h1>
-        <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">Software Engineer</p>
-        <p className="mt-1 text-sm font-bold text-gray-700 dark:text-gray-200">Ex-Epic Systems • BS & MCS @ UIUC</p>
-        <p className="mt-3 max-w-[32ch] text-sm leading-6 text-gray-700 dark:text-gray-200"> Reliable backends. Clean UIs. Practical AI tools for development.</p>
+        <h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
+          Edward Passagi
+        </h1>
+        <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
+          Software Engineer
+        </p>
+        <p className="mt-1 text-sm font-bold text-gray-700 dark:text-gray-200">
+          Founder @{" "}
+          <a
+            href="https://workonesia.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 hover:underline"
+          >
+            Workonesia
+          </a>{" "}
+          • Ex-Epic, Meta • UIUC BS & MCS
+        </p>
+        <p className="mt-3 max-w-[32ch] text-sm leading-6 text-gray-700 dark:text-gray-200">
+          Building cross-border hiring infrastructure.
+        </p>
         <div className="mt-5 space-y-3">
           <div className="flex justify-center gap-2">
             <a
               href="/resume.pdf"
-              onClick={() => trackEvent('resume_click')}
+              onClick={() => trackEvent("resume_click")}
               className="rounded-full inline-flex items-center bg-gray-900 dark:bg-gray-100 px-3 py-2 text-xs font-medium text-white dark:text-gray-900 shadow-sm transition hover:-translate-y-0.5 hover:shadow-lg"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -71,7 +99,7 @@ export default function ProfileCard() {
             </a>
             <a
               href="mailto:edward.passagi@gmail.com"
-              onClick={() => trackEvent('email_click')}
+              onClick={() => trackEvent("email_click")}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -82,7 +110,7 @@ export default function ProfileCard() {
               href="https://github.com/edwardpassagi"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent('github_click')}
+              onClick={() => trackEvent("github_click")}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -95,7 +123,7 @@ export default function ProfileCard() {
               href="https://linkedin.com/in/epassagi"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent('linkedin_click')}
+              onClick={() => trackEvent("linkedin_click")}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -106,7 +134,7 @@ export default function ProfileCard() {
               href="https://youtube.com/@edwardpassagi"
               target="_blank"
               rel="noopener noreferrer"
-              onClick={() => trackEvent('youtube_click')}
+              onClick={() => trackEvent("youtube_click")}
               className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
             >
               <span className="inline-flex items-center gap-1.5">
@@ -117,5 +145,5 @@ export default function ProfileCard() {
         </div>
       </div>
     </div>
-  )
+  );
 }
