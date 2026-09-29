@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { Instagram, Music2, Youtube } from "lucide-react";
+import { Instagram, Music2, Play, Youtube } from "lucide-react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { trackEvent } from "@/components/Analytics";
@@ -80,6 +80,27 @@ function thumbnailUrl(link: MusicLink) {
   return id ? `https://i.ytimg.com/vi/${id}/hqdefault.jpg` : null;
 }
 
+const socials = [
+  {
+    href: artist.instagramUrl,
+    label: "Instagram",
+    icon: Instagram,
+    event: "music_instagram_click",
+  },
+  {
+    href: artist.channelUrl,
+    label: "YouTube",
+    icon: Youtube,
+    event: "music_channel_click",
+  },
+  {
+    href: artist.tiktokUrl,
+    label: "TikTok",
+    icon: Music2,
+    event: "music_tiktok_click",
+  },
+];
+
 function MusicLinkCard({ link }: { link: MusicLink }) {
   const platform = link.platform ?? "youtube";
   const thumbnail = thumbnailUrl(link);
@@ -93,9 +114,9 @@ function MusicLinkCard({ link }: { link: MusicLink }) {
       onClick={() =>
         trackEvent("music_link_click", { title: link.title, platform })
       }
-      className="group flex items-center gap-3 rounded-2xl border border-gray-200 bg-white/90 p-2.5 shadow-sm backdrop-blur-sm transition hover:-translate-y-0.5 hover:shadow-lg dark:border-gray-700 dark:bg-gray-800/90"
+      className="group block overflow-hidden rounded-[1.75rem] bg-gray-950 text-white shadow-xl ring-1 ring-black/20 transition hover:-translate-y-1 hover:shadow-2xl"
     >
-      <span className="relative aspect-video w-40 shrink-0 overflow-hidden rounded-xl bg-gray-100 dark:bg-gray-700">
+      <span className="relative block aspect-video bg-gray-900">
         {thumbnail ? (
           <img
             src={thumbnail}
@@ -104,13 +125,20 @@ function MusicLinkCard({ link }: { link: MusicLink }) {
           />
         ) : null}
       </span>
-      <span className="min-w-0 flex-1 pr-1 text-left">
-        <span className="block text-sm font-medium leading-5 text-gray-900 dark:text-white">
-          {link.title}
+      <span className="flex items-center gap-3 px-4 py-3 text-left">
+        <span className="min-w-0 flex-1">
+          <span className="block text-sm font-medium leading-5">
+            {link.title}
+          </span>
+          <span className="mt-1 inline-flex items-center gap-1.5 text-[11px] text-white/70">
+            {platform === "youtube" ? (
+              <Youtube className="h-3.5 w-3.5" />
+            ) : null}
+            {platformLabel[platform]}
+          </span>
         </span>
-        <span className="mt-1 inline-flex items-center gap-1 text-xs text-gray-500 dark:text-gray-400">
-          {platform === "youtube" ? <Youtube className="h-3.5 w-3.5" /> : null}
-          {platformLabel[platform]}
+        <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-white text-gray-950 shadow-lg transition group-hover:scale-105">
+          <Play className="ml-0.5 h-4 w-4 fill-current" />
         </span>
       </span>
     </motion.a>
@@ -151,66 +179,58 @@ export default function MusicPage() {
         <rect width="100%" height="100%" fill="url(#music-dots)" />
       </svg>
 
-      <div className="mx-auto flex min-h-dvh w-full max-w-md flex-col px-5 pb-10 pt-24">
-        <motion.header
-          variants={itemVariants}
-          className="flex flex-col items-center text-center"
-        >
-          <Image
-            src={artist.photo}
-            alt={artist.name}
-            width={112}
-            height={112}
-            priority
-            className="h-28 w-28 rounded-full object-cover shadow-md ring-4 ring-gray-200 dark:ring-gray-700"
-          />
-          <h1 className="mt-4 text-2xl font-semibold tracking-tight text-gray-900 dark:text-white">
-            {artist.name}
-          </h1>
-          <p className="mt-2 max-w-[28ch] text-sm leading-6 text-gray-600 dark:text-gray-300">
-            {artist.tagline}
-          </p>
-          <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-            <a
-              href={artist.instagramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("music_instagram_click")}
-              className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-            >
-              <Instagram className="h-3.5 w-3.5" />
-              Instagram
-            </a>
-            <a
-              href={artist.channelUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("music_channel_click")}
-              className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-            >
-              <Youtube className="h-3.5 w-3.5" />
-              YouTube
-            </a>
-            <a
-              href={artist.tiktokUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackEvent("music_tiktok_click")}
-              className="inline-flex items-center gap-1.5 rounded-full border border-gray-300 bg-white px-3 py-2 text-xs font-medium text-gray-800 shadow-sm transition hover:-translate-y-0.5 hover:shadow dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-            >
-              <Music2 className="h-3.5 w-3.5" />
-              TikTok
-            </a>
+      <div className="flex min-h-dvh flex-col">
+        <motion.header variants={itemVariants} className="relative h-dvh">
+          <div className="relative mx-auto h-full w-full max-w-[1080px]">
+            <Image
+              src={artist.photo}
+              alt={artist.name}
+              width={3024}
+              height={4032}
+              priority
+              className="h-full w-full object-cover object-[center_75%]"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black via-black/35 to-black/10" />
+            <div className="absolute inset-x-0 bottom-0">
+              <div className="mx-auto max-w-lg px-5 pb-20 text-left text-white">
+                <p className="text-[11px] font-medium uppercase tracking-[0.28em] text-white/70">
+                  puh-sa-gee
+                </p>
+                <h1 className="mt-1 text-5xl font-semibold tracking-tight">
+                  {artist.name}
+                </h1>
+                <p className="mt-2 max-w-[28ch] text-sm leading-6 text-white/80">
+                  {artist.tagline}
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="absolute inset-x-0 bottom-6 z-10 flex flex-wrap justify-center gap-2 px-5">
+            {socials.map((social) => (
+              <a
+                key={social.label}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => trackEvent(social.event)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-white/70 bg-white px-3.5 py-2 text-xs font-medium text-gray-900 shadow-lg transition hover:-translate-y-0.5 hover:shadow-xl dark:border-gray-600 dark:bg-gray-800 dark:text-gray-100"
+              >
+                <social.icon className="h-3.5 w-3.5" />
+                {social.label}
+              </a>
+            ))}
           </div>
         </motion.header>
 
-        <section className="mt-8 flex flex-col gap-3" aria-label="Releases">
-          {links.map((link) => (
-            <MusicLinkCard key={link.href} link={link} />
-          ))}
-        </section>
+        <div className="mx-auto flex w-full max-w-lg flex-1 flex-col px-5 pb-10">
+          <section className="mt-8 flex flex-col gap-4" aria-label="Releases">
+            {links.map((link) => (
+              <MusicLinkCard key={link.href} link={link} />
+            ))}
+          </section>
 
-        <Footer className="mt-auto pt-10" />
+          <Footer className="mt-auto pt-10" />
+        </div>
       </div>
     </motion.main>
   );
