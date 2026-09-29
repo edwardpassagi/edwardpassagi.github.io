@@ -28,7 +28,8 @@ export default function Navbar() {
 
     const scroller = scrollParent(nav) ?? window;
     const onScroll = () => {
-      const top = scroller === window ? window.scrollY : scroller.scrollTop;
+      const top =
+        scroller instanceof HTMLElement ? scroller.scrollTop : window.scrollY;
       setScrolled(top > 0);
     };
 
