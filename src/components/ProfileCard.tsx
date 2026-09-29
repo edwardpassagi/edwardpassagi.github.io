@@ -2,7 +2,14 @@
 
 import Image from "next/image";
 import { useRef, useState } from "react";
-import { Mail, FileText, Github, Linkedin, Youtube } from "lucide-react";
+import {
+  Mail,
+  FileText,
+  Github,
+  KeyboardMusic,
+  Linkedin,
+  Youtube,
+} from "lucide-react";
 import { trackEvent } from "./Analytics";
 
 export default function ProfileCard() {
@@ -139,6 +146,15 @@ export default function ProfileCard() {
             >
               <span className="inline-flex items-center gap-1.5">
                 <Youtube className="h-3.5 w-3.5" /> YouTube
+              </span>
+            </a>
+            <a
+              href="/music"
+              onClick={() => trackEvent("hobby_click")}
+              className="rounded-full border inline-flex items-center border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 px-3 py-2 text-xs font-medium text-gray-800 dark:text-gray-200 shadow-sm transition hover:-translate-y-0.5 hover:shadow"
+            >
+              <span className="inline-flex items-center gap-1.5">
+                <KeyboardMusic className="h-3.5 w-3.5" /> Music
               </span>
             </a>
           </div>

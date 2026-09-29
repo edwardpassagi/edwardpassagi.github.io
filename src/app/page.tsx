@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import ProfileCard from '@/components/ProfileCard'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -53,10 +54,7 @@ export default function Home() {
         <ProfileCard />
       </motion.div>
 
-      {/* Footer watermark */}
-      <p className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2 text-center text-[10px] text-gray-400 dark:text-gray-500">
-        © {new Date().getFullYear()} Edward Passagi • Built with Next.js & Tailwind
-      </p>
+      <Footer className="pointer-events-none absolute bottom-4 left-1/2 -translate-x-1/2" />
     </motion.main>
   )
 }

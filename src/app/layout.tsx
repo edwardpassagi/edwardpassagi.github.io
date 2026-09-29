@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_US',
-    url: 'https://edwardpassagi.github.io',
+    url: 'https://epassagi.com',
     title: 'Edward Passagi - Software Engineer',
     description: 'Edward Passagi is a Backend Engineer with BS & MCS in Computer Science from UIUC. Ex-Epic Systems Software Developer.',
     siteName: 'Edward Passagi Portfolio',
