@@ -26,6 +26,11 @@ type MusicLink = {
 
 const links: MusicLink[] = [
   {
+    title: "the scientist (cover)",
+    href: "https://youtu.be/Vo3oR69wjIE?si=VpzON1fxYhIm9xik",
+    platform: "youtube",
+  },
+  {
     title: "ordinary people (cover)",
     href: "https://youtu.be/L3cc68nIuHM?si=GprvNG5ideCfsPCK",
     platform: "youtube",
@@ -222,8 +227,11 @@ export default function MusicPage() {
           </div>
         </motion.header>
 
-        <div className="mx-auto flex w-full max-w-lg flex-1 flex-col px-5 pb-10">
-          <section className="mt-8 flex flex-col gap-4" aria-label="Releases">
+        <div className="mx-auto flex w-full max-w-5xl flex-1 flex-col px-5 pb-10">
+          <section
+            className="mt-8 grid grid-cols-1 gap-4 md:grid-cols-2"
+            aria-label="Releases"
+          >
             {links.map((link) => (
               <MusicLinkCard key={link.href} link={link} />
             ))}
